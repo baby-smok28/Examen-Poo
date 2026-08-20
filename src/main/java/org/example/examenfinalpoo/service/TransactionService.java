@@ -2,6 +2,7 @@ package org.example.examenfinalpoo.service;
 
 import lombok.AllArgsConstructor;
 import org.example.examenfinalpoo.model.Transaction;
+import org.example.examenfinalpoo.model.TransactionRequest;
 import org.example.examenfinalpoo.model.TransactionType;
 import org.example.examenfinalpoo.repository.TransactionRepository;
 import org.springframework.stereotype.Service;
@@ -26,13 +27,22 @@ public class TransactionService {
     }
 
     public Transaction createTransaction(String transactionType, BigDecimal amount, String reason, String accountId) {
+        return createTransaction(new TransactionRequest(
+                accountId,
+                TransactionType.valueOf(transactionType.toUpperCase()),
+                amount,
+                reason
+        ));
+    }
+
+    public Transaction createTransaction(TransactionRequest request) {
         Transaction transaction = new Transaction(
                 UUID.randomUUID().toString(),
                 Instant.now(),
-                TransactionType.valueOf(transactionType.toUpperCase()),
-                amount,
-                reason,
-                accountId
+                request.getTransactionType(),
+                request.getAmount(),
+                request.getReason(),
+                request.getAccountId()
         );
         transactionRepository.save(transaction);
         return transaction;

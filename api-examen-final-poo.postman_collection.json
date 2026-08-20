@@ -1,0 +1,143 @@
+{
+	"info": {
+		"name": "Examen Final Poo API",
+		"description": "Tests des 4 endpoints Spring Boot (GET /transactions, GET /accounts/{id}/transactions, POST /transaction, GET /account/{id}/balance)"
+	},
+	"item": [
+		{
+			"name": "GET /transactions?type=in",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/transactions?type=in",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "in"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "GET /transactions?type=out",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/transactions?type=out",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "out"
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "GET /accounts/001/transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/accounts/001/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"accounts",
+						"001",
+						"transactions"
+					]
+				}
+			}
+		},
+		{
+			"name": "POST /transaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"accountId\": \"002\",\n    \"transactionType\": \"OUT\",\n    \"amount\": 50.00,\n    \"reason\": \"test postman\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/transaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transaction"
+					]
+				}
+			}
+		},
+		{
+			"name": "GET /account/001/balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/account/001/balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"001",
+						"balance"
+					]
+				}
+			}
+		},
+		{
+			"name": "GET /account/002/balance",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/account/002/balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"account",
+						"002",
+						"balance"
+					]
+				}
+			}
+		}
+	]
+}
